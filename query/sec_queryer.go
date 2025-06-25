@@ -21,8 +21,7 @@ const (
 
 var secOptions = []string{"rxrw", "rxzr", "yyxx"}
 
-type SecQueryer struct {
-}
+type SecQueryer struct{}
 
 func secRequest(str, cookie string) []byte {
 	client := &http.Client{}

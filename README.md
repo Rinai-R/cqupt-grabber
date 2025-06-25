@@ -1,7 +1,7 @@
 ![cqupt-grabber](img/cqupt-grabber.png)
 
 ## 版本
-当前版本：**v0.1.4**  
+当前版本：**v0.1.5**  
 
 ## 目录
 - [cqupt-grabber](#cqupt-grabber)
@@ -66,6 +66,8 @@ func main() {
 ```
 
 针对于小学期选课，你应该使用 NewForSmallTerm() 来获取对象，详情见 example
+
+对于正式选课，也就是第二次选课，你应该使用 NewForSecXk() 来获取对象，详情见 example
 
 > 为防止工具滥用的可能性，只提供一定示例，不提供详细的使用教程。
 
