@@ -2,6 +2,7 @@ package query
 
 import (
 	"encoding/json"
+	"fmt"
 	"io"
 	"log"
 	"net/http"
@@ -60,7 +61,7 @@ func (q *SmallQueryer) SimpleSearch(cookie string, content []string, class strin
 		log.Fatal(err)
 	}
 	for _, item := range classInfo.Data {
-		if confirmContain(item, content) {
+		if confirmContain(fmt.Sprintln(item), content) {
 			loads = append(loads, item)
 		}
 	}

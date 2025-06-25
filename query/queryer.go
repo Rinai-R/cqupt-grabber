@@ -143,7 +143,7 @@ func (q *Queryer) SimpleSearch(cookie string, content []string) (loads []string)
 			log.Fatal(err)
 		}
 		for _, item := range classInfo.Data {
-			if confirmContain(item, content) {
+			if confirmContain(fmt.Sprintln(item), content) {
 				load := solveData(item)
 				loads = append(loads, load)
 			}
@@ -153,9 +153,9 @@ func (q *Queryer) SimpleSearch(cookie string, content []string) (loads []string)
 }
 
 // 通用方法，用于根据给定的关键词过滤课程
-func confirmContain(data model.MetaData, content []string) bool {
+func confirmContain(data string, content []string) bool {
 	for _, str := range content {
-		if !strings.Contains(fmt.Sprintln(data), str) {
+		if !strings.Contains(data, str) {
 			return false
 		}
 	}

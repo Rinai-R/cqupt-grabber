@@ -15,6 +15,11 @@ type SmallEngine struct {
 	Grabber grab.SmallGrabber
 }
 
+type SecEngine struct {
+	Queryer query.SecQueryer
+	Grabber grab.SecGrabber
+}
+
 // 正常选课时，使用这个实例
 func New() *Engine {
 	h := &Engine{
@@ -29,6 +34,14 @@ func NewForSmallTerm() *SmallEngine {
 	h := &SmallEngine{
 		Queryer: query.SmallQueryer{},
 		Grabber: grab.SmallGrabber{},
+	}
+	return h
+}
+
+func NewForSecXk() *SecEngine {
+	h := &SecEngine{
+		Queryer: query.SecQueryer{},
+		Grabber: grab.SecGrabber{},
 	}
 	return h
 }
