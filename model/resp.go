@@ -58,6 +58,7 @@ type SecCourseData struct {
 	Xkzt    int      `json:"xkzt"`    // 选课状态（1 = 可选）
 	Zc      []string `json:"zc"`      // 周次信息编码（如 ["111111111111111100000"]）
 	Zym     string   `json:"zym"`     // 专业信息（为空时为通选课）
+	SubJxb  string   `json:"subJxb"`  // 体育选课时要用这个
 }
 
 type SecResponse struct {

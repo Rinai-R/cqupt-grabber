@@ -129,3 +129,40 @@ func (q *SecQueryer) SimpleSearch(cookie string, content []string) (loads []mode
 	}
 	return
 }
+
+// 获取体育课
+func (q *SecQueryer) SearchForPE(cookie string, content []string) (loads []model.SecCourseData) {
+	MustCourse := secRequest("bj", cookie)
+	var MustCourseJson model.SecResponse
+	err := json.Unmarshal(MustCourse, &MustCourseJson)
+	if err != nil {
+		log.Fatal(err)
+	}
+	for _, course := range MustCourseJson.Data {
+		if !strings.Contains(course.Kcmc, "体育") {
+			continue
+		}
+		// 此处获取了所有的体育课程
+		PE := secRequest("tyfx&jxb="+course.Jxb, cookie)
+		Response := make(map[string]interface{})
+		json.Unmarshal(PE, &Response)
+		fmt.Println(Response)
+		for _, data := range Response["data"].([]interface{}) {
+			mp := data.(map[string]interface{})
+			if err != nil {
+				log.Fatal(err)
+			}
+			for _, x := range mp {
+				fmt.Println(x)
+			}
+			// 确保包含关键词
+			if confirmContain(mp["jxbName"].(string), content) ||
+				confirmContain(mp["teaName"].(string), content) ||
+				confirmContain(mp["subJxb"].(string), content) {
+				course.SubJxb = data.(map[string]interface{})["subJxb"].(string)
+				loads = append(loads, course)
+			}
+		}
+	}
+	return
+}

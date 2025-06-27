@@ -36,6 +36,9 @@ func (g *SecGrabber) SingleRob(cookie string, load model.SecCourseData) string {
 	data.Add("xf", load.Xf)
 	data.Add("xkzt", strconv.Itoa(load.Xkzt))
 	data.Add("zym", load.Zym)
+	if load.SubJxb != "" {
+		data.Add("subJxb", load.SubJxb)
+	}
 
 	// 注意：数组要用多次 Add(key, value)
 	for _, sd := range load.Sd {

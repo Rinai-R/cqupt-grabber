@@ -67,7 +67,7 @@ func main() {
 
 针对于小学期选课，你应该使用 NewForSmallTerm() 来获取对象，详情见 example
 
-对于正式选课，也就是第二次选课，你应该使用 NewForSecXk() 来获取对象，详情见 example
+对于正式选课（包括体育选课），也就是第二次选课，你应该使用 NewForSecXk() 来获取对象，详情见 example
 
 > 为防止工具滥用的可能性，只提供一定示例，不提供详细的使用教程。
 
@@ -152,6 +152,14 @@ func (g *SmallGrabber) LoopRob(cookie string, loads []model.MetaData) {
 ...
 }
 ```
+
+```go
+// 获取体育选课信息
+func (q *SecQueryer) SearchForPE(cookie string, content []string) (loads []model.SecCourseData){
+...
+}
+```
+
 更多功能请自行探索。
 
 
